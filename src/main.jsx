@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Todo from './Todo.jsx/index.js';
+import Todo from "./ToDo/ToDo.jsx";
 
 import Home from './Home/Home.jsx';
 
@@ -10,9 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-      <Route path='/' element={<Home />}></Route>
-      <Route path='/todo' element ={<Todo />}></Route>
-       </Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/todo' element={<Todo />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
