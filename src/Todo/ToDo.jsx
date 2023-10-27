@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import '/public/style.css'
 export default function Todo() {
   const [descricao, setDescricao] = useState("");
   const [options, setOptions] = useState([]);
   const [marcaDaCamisa, setMarcaDaCamisa] = useState("");
-  const [id, setId] = useState(1);
+  const [id, setId] = useState(() => {
+    const storedData = JSON.parse(localStorage.getItem("Lista")) || [];
+    const lastId = storedData.length > 0 ? storedData[storedData.length - 1].id : 0;
+    return lastId + 1;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("Lista", JSON.stringify(options));
+  }, [options]);
 
   const salvar = (e) => {
     e.preventDefault();
@@ -13,14 +21,16 @@ export default function Todo() {
       return;
     }
 
-    setOptions([...options, {
+    const newOption = {
       descricao: descricao,
       id: id,
-      marcaDaCamisa: marcaDaCamisa 
-    }]);
+      marcaDaCamisa: marcaDaCamisa,
+    };
+
+    setOptions([...options, newOption]);
     setId(id + 1);
     setDescricao("");
-    setMarcaDaCamisa(""); 
+    setMarcaDaCamisa("");
   };
 
   const remover = (id) => {
@@ -30,7 +40,7 @@ export default function Todo() {
 
   return (
     <div>
-      <h1 className="d">Opções de Camisas</h1> 
+      <h1 className="d">Opções de Camisas</h1>
       
       <div className="add">
         <form onSubmit={salvar}>
@@ -52,7 +62,7 @@ export default function Todo() {
         <ul key={option.id}>
           <li>
             <p>{option.descricao}</p>
-            <p>{option.marcaDaCamisa}</p> 
+            <p>{option.marcaDaCamisa}</p>
             <button onClick={() => remover(option.id)}>Remover</button>
           </li>
         </ul>

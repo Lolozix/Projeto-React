@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+    background-color: #257b67;
+  }
+  
+  .container {
+    max-width: 40%;
+    margin: 3% auto;
+    background-color: #00ffa2;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin: 3% 0 3% 5%;
+    font-weight: bold;
+  }
+  
+  input {
+    text-align: center;
+    width: 86.5%;
+    padding: 10px;
+    border: 1px solid #00ffa2;
+    border-radius: 4px;
+    margin-left: 5%;
+  }
+  
+  button {
+    background-color: #b79184;
+  }

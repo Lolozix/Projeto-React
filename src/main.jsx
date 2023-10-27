@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Todo from "./ToDo/ToDo.jsx";
+import Todo from "./Todo/ToDo.jsx";
 
 import Home from './Home/Home.jsx';
 
