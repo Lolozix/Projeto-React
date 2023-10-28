@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '/public/style.css'
+import './style.css'; // Importe o arquivo de estilo corretamente
+
 export default function Todo() {
   const [descricao, setDescricao] = useState("");
   const [options, setOptions] = useState([]);
@@ -46,19 +47,19 @@ export default function Todo() {
         <form onSubmit={salvar}>
           <input
             value={descricao}
-            onChange={(e) => { setDescricao(e.target.value) }}
+            onChange={(e) => setDescricao(e.target.value)}
             placeholder="Descrição"
           />
           <input
             value={marcaDaCamisa}
-            onChange={(e) => { setMarcaDaCamisa(e.target.value) }}
+            onChange={(e) => setMarcaDaCamisa(e.target.value)}
             placeholder="Marca da camisa"
           />
           <button className="btn" type="submit">Adicionar</button>
         </form>
       </div>
 
-      {options.map((option) =>
+      {options.map((option) => (
         <ul key={option.id}>
           <li>
             <p>{option.descricao}</p>
@@ -66,8 +67,7 @@ export default function Todo() {
             <button onClick={() => remover(option.id)}>Remover</button>
           </li>
         </ul>
-      )}
-
+      ))}
     </div>
   );
 }
