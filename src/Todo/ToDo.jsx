@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './style.css'; // Importe o arquivo de estilo corretamente
+import './public/style.css'; 
+import './main/main.jsx'; 
+import './public/style.css'; 
 
 export default function Todo() {
   const [descricao, setDescricao] = useState("");
