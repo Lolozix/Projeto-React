@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './public/style.css'; 
-import './main/main.jsx'; 
-import './public/style.css'; 
+import React, { useState, useEffect } from "react";
+import "./public/style.css";
+import "./main/main.jsx";
+import "./public/style.css";
 
 export default function Todo() {
   const [descricao, setDescricao] = useState("");
@@ -9,7 +9,8 @@ export default function Todo() {
   const [marcaDaCamisa, setMarcaDaCamisa] = useState("");
   const [id, setId] = useState(() => {
     const storedData = JSON.parse(localStorage.getItem("Lista")) || [];
-    const lastId = storedData.length > 0 ? storedData[storedData.length - 1].id : 0;
+    const lastId =
+      storedData.length > 0 ? storedData[storedData.length - 1].id : 0;
     return lastId + 1;
   });
 
@@ -39,12 +40,12 @@ export default function Todo() {
   const remover = (id) => {
     const updatedOptions = options.filter((item) => item.id !== id);
     setOptions(updatedOptions);
-  }
+  };
 
   return (
     <div>
       <h1 className="d">Opções de Camisas</h1>
-      
+
       <div className="add">
         <form onSubmit={salvar}>
           <input
@@ -57,17 +58,21 @@ export default function Todo() {
             onChange={(e) => setMarcaDaCamisa(e.target.value)}
             placeholder="Marca da camisa"
           />
-          <button className="btn" type="submit">Adicionar</button>
+          <button className="btn" type="submit">
+            Adicionar
+          </button>
         </form>
       </div>
 
       {options.map((option) => (
         <ul key={option.id}>
-          <li>
-            <p>{option.descricao}</p>
-            <p>{option.marcaDaCamisa}</p>
-            <button onClick={() => remover(option.id)}>Remover</button>
-          </li>
+          <Link to={"/detalhe/${objeto.id}"}>
+            <li>
+              <p>{option.descricao}</p>
+              <p>{option.marcaDaCamisa}</p>
+              <button onClick={() => remover(option.id)}>Remover</button>
+            </li>
+          </Link>
         </ul>
       ))}
     </div>
